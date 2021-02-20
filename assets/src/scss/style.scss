@@ -1,0 +1,20 @@
+/*!
+Theme Name: basic theme
+Author: kote2
+Author URI: https://kote2.tokyo/
+Description: basic headless theme.
+Version: 1.0
+License: GNU General Public License v3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'variables';
+@import 'functions';
+@import 'mixins';
+@import 'common';
+@import 'parts_common';
+@import 'common/main';
+@import 'pages/index/main';

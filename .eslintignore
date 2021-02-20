@@ -1,0 +1,16 @@
+# dist
+# store
+# plugins
+# pages
+# mixins
+# components
+# mixins
+# nuxt.config.js
+# .eslintrc.js
+# package-lock.json
+# package.json
+# node_modules
+# dist
+# stylelint.config.js
+# tailwind.config.js
+style.css.map
