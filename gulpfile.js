@@ -19,7 +19,6 @@ const server = browserSync.create();
 const isProd = process.env.NODE_ENV === 'production';
 
 function icon(done) {
-  console.log('スタート');
   for (let size of sizes) {
     let width = size[0];
     let height = size[1];

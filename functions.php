@@ -46,3 +46,27 @@ add_filter('show_admin_bar', '__return_false');
 add_action('init', function(){
   session_start();
 });
+
+// ==================================================
+// js/css
+// ==================================================
+
+function basicwp_kote2_scripts() {
+
+  //キャッシュ対策
+  date_default_timezone_set('Asia/Tokyo');
+  $id = date("YmdHis"); ;
+
+	//CSS
+  // wp_enqueue_style( 'theme_kote2tokyo-animate', '//fonts.googleapis.com/css?family=Anton', array(), $id );
+	wp_enqueue_style( 'basicwp_kote2-style', get_stylesheet_uri(), array(), $id ); // style.css
+
+  //JS
+  wp_enqueue_script( 'theme_kote2tokyo-polyfill', '//polyfill.io/v3/polyfill.min.js?features=es6%2CIntersectionObserver%2CIntersectionObserverEntry', array(), $id, true);
+	wp_enqueue_script( 'basicwp_kote2-script-js', get_template_directory_uri(). '/assets/dist/js/script.js', array(), $id, true);
+	
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'basicwp_kote2_scripts' );

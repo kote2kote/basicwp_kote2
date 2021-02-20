@@ -7,9 +7,9 @@
 module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true
+    purgeLayersByDefault: true,
   },
-  purge: ['./**/*.vue'],
+  purge: ['./**/*.php'],
   theme: {
     screens: {
       // https://tailwindcss.com/docs/breakpoints
@@ -47,12 +47,12 @@ module.exports = {
 
       // wide 1800px
       maxwide: { max: '1799px' },
-      wide: '1800px'
-    }
+      wide: '1800px',
+    },
   },
   variants: {},
-  plugins: []
-}
+  plugins: [],
+};
 
 // module.exports = {
 //   purge: [],
