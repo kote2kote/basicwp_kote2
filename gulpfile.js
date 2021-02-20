@@ -5,8 +5,8 @@
 const { src, dest, watch, series, parallel, lastRun } = require('gulp');
 const loadPlugins = require('gulp-load-plugins');
 const $ = loadPlugins();
-const pkg = require('./package.json');
 const del = require('del');
+const pkg = require('./package.json');
 const conf = pkg['gulp-config'];
 const sizes = conf.sizes;
 const autoprefixer = require('autoprefixer');
@@ -19,6 +19,7 @@ const server = browserSync.create();
 const isProd = process.env.NODE_ENV === 'production';
 
 function icon(done) {
+  console.log('スタート');
   for (let size of sizes) {
     let width = size[0];
     let height = size[1];
@@ -119,11 +120,7 @@ function startAppServer() {
   ]).on('change', reload);
 }
 
-const build = series(
-  // clean,
-  // parallel(optimizeImages, favicon, html, php, styles, series(lint, scripts))
-  parallel(optimizeImages, styles, series(lint, scripts))
-);
+const build = series(parallel(optimizeImages, icon, styles, series(lint, scripts)));
 const serve = series(build, startAppServer);
 
 exports.icon = icon;
