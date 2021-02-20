@@ -8,4 +8,13 @@
  */
 ?>
 
-<aside class="aside cm" style="width: 300px;">aside</aside>
+<aside class="aside p-4" style="width: 300px;">
+<h5 class="c-tail">カテゴリメニュー</h5>
+<?php 
+  wp_nav_menu( array(
+    'theme_location'	=> 'mainmenu', // function.phpで設定したメニュー名を表示
+    'container'			=> false
+  ) );
+?>
+
+</aside>

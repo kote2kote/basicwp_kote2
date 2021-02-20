@@ -70,3 +70,11 @@ function basicwp_kote2_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'basicwp_kote2_scripts' );
+
+// ==================================================
+// メニューの設定
+// ==================================================
+
+register_nav_menus( array(
+  'mainmenu' => esc_html__( 'サイドバー', 'basicwp_kote2' ),
+));

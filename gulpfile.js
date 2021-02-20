@@ -43,13 +43,17 @@ function styles() {
     .pipe($.sass())
     .pipe($.postcss([tailwindcss('./tailwind.config.js'), autoprefixer()]))
     .pipe(
-      $.if(
-        isProd,
-        $.purgecss({
-          content: ['./**/*.php'],
-          defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
-        })
-      )
+      // $.if(
+      //   isProd,
+      //   $.purgecss({
+      //     content: ['./**/*.php'],
+      //     defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
+      //   })
+      // )
+      $.purgecss({
+        content: ['./**/*.php'],
+        defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
+      })
     )
     .pipe($.if(isProd, $.postcss([cssnano({ safe: true, autoprefixer: false })])))
     .pipe($.if(!isProd, $.sourcemaps.write('.')))
