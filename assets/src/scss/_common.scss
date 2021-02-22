@@ -1,3 +1,6 @@
+// ==================================================
+// head common
+// ==================================================
 *,
 *::before,
 *::after {
@@ -17,15 +20,13 @@ body {
   font-size: $v-font-size-default;
 }
 
-a {
-  transition: all 0.3s ease;
-  &:hover {
-    color: $v-color-link;
-  }
-  // &:disabled {
-  //   pointer-events: none;
-  // }
-}
+// a {
+//   transition: all 0.3s ease;
+//   &:hover {
+//     color: $v-color-link;
+//   }
+// }
+
 p {
   padding-bottom: 1rem;
 }
@@ -43,6 +44,7 @@ p {
 }
 
 // -- ie --------------------
+// @media all and (-ms-high-contrast: none) {
 @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
   /* IE10 以降にのみ適用される */
   .ie-block {
@@ -50,6 +52,34 @@ p {
   }
   .ie-hidden {
     display: none;
+  }
+}
+
+// -- debug color --------------------
+.check-mode {
+  * [class^='ly_'] {
+    outline: #dc143c 2px solid;
+  }
+  * [class^='bl_'] {
+    border: #00f 2px solid;
+  }
+  * [class^='el_'] {
+    border: #ffd700 2px solid;
+  }
+}
+.check-mode-outer {
+  * [class^='ly_'] {
+    outline: #dc143c 2px solid;
+  }
+}
+.check-mode-bl {
+  * [class^='bl_'] {
+    border: #00f 2px solid;
+  }
+}
+.check-mode-el {
+  * [class^='el_'] {
+    border: #ffd700 2px solid;
   }
 }
 
@@ -172,5 +202,5 @@ p {
 
 // -- objectfit --------------------
 .c-object-coverIE {
-  font-family: 'object-fit: cover;'; /*IE対策*/
+  font-family: 'object-fit: cover;'; /* IE対策 */
 }

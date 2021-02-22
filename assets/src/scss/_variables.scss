@@ -20,26 +20,26 @@ $v-color-font: $v-color-01;
 .v-color-theme {
   color: $v-color-02;
 }
-.v-bgcolor-theme {
-  background: $v-color-02;
-}
-.v-bgcolor-title {
-  background: $v-color-06;
-}
 .v-color-font {
   color: $v-color-01;
 }
 .v-color-subtext {
   color: $v-color-04;
 }
+.v-bgcolor-theme {
+  background: $v-color-02;
+}
+.v-bgcolor-title {
+  background: $v-color-06;
+}
 
 // -- font --------------------
-$v-font: 'europa', 'YuGothic', 'Yu Gothic M', メイリオ, meiryo, sans-serif;
 $v-font-sans-serif: 'Helvetica Neue', 'Helvetica', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN',
   'Arial', 'Yu Gothic', 'Meiryo', sans-serif;
 $v-font-serif: 'Times New Roman', 'YuMincho', 'Hiragino Mincho ProN', 'Yu Mincho', 'MS PMincho',
   serif;
 $v-font-size-default: 16;
+$v-font: $v-font-sans-serif;
 
 // -- breakpoints --------------------
 $v-bp: (

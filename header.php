@@ -31,6 +31,6 @@ Header
 </header>
 
 
-<div class="flex flex-grow">
+<div class="flex flex-grow pt-4">
 <?
 get_sidebar();

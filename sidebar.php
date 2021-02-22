@@ -8,7 +8,7 @@
  */
 ?>
 
-<aside class="aside p-4" style="width: 300px;">
+<aside class="aside px-4" style="width: 300px;">
 <h5 class="c-tail">カテゴリメニュー</h5>
 <?php 
   wp_nav_menu( array(
