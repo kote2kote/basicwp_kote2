@@ -120,7 +120,7 @@ function startAppServer() {
     './assets/src/scss/**/*.scss',
     './assets/src/js/**/*.js',
     './assets/src/images/**',
-  ]).on('change', reload);
+  ]).on('change', serve);
 }
 
 const build = series(parallel(optimizeImages, icon, styles, series(lint, scripts)));

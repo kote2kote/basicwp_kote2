@@ -16,27 +16,42 @@ get_header();
 ?>
 <main class="main w-full">
 　　<div class="inner px-8">
-			  <h2 class="c-tail mb-8">メイン</h2>
-				<div class="">
-				text
-				</div>
-				<h3 class="c-tail with-margin">オプション</h3>
-				<div class="">
-				test
-				</div>
-				<h4 class="c-tail with-margin">h4.c-tail</h4>
-				<div class="">
-				test
-				</div>
-				<h5 class="c-tail with-margin">h5.c-tail</h5>
-				<div class="">
-				test
-				</div>
-				<h6 class="c-tail with-margin">h6.c-tail</h6>
-				<div class="">
-				test
-				</div>
+			<h2 class="c-tail mb-8">トップページ</h2>
+			<div class="">
+				<ul class="list-none">
+					<?php
+
+					// ==================================================
+          // サブループ(WP_Query)
+          // ==================================================
+          $args = array(
+
+            // -- 記事のタイプ --------------------
+            'post_type' => 'post', 
+            // 'post_type' => 'page', 
+            // 'post_type' => 'nav_menu_item', 
+            // 'post_type' => 'hero_slider', // 
+  
+            // -- オプション --------------------
+            'category__not_in' => [1], // acfのカテゴリと未定義は除く
+            'posts_per_page' => -1, // -1は全て
+            'no_found_rows' => false, //全部取ってくる。つまり、true => ページングを使用しない false => 使用する
+          );
+
+          $the_query = new WP_Query($args);
+          if ($the_query->have_posts()) {
+            while ($the_query->have_posts()) {
+              $the_query->the_post();
+              get_template_part( 'template-parts/content', get_post_format());
+              // get_template_part( 'template-parts/index/wpq_content', get_post_format());
+            }
+          }
+          wp_reset_postdata();
+
+					?>
+				</ul>
 			</div>
+		</div>
 </main>
 </div>
 <?php
