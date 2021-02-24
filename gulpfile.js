@@ -92,22 +92,22 @@ function reload() {
 }
 
 function startAppServer() {
-  // phpServer.server(
-  //   {
-  //     base: 'http://localhost:10028/',
-  //     port: 5010,
-  //     open: false,
-  //     bin: '/Applications/MAMP/bin/php/php7.2.8/bin/php',
-  //     ini: '/Applications/MAMP/bin/php/php7.2.8/conf/php.ini',
-  //   },
-  //   function () {
-  //     browserSync({
-  //       baseDir: 'http://localhost:10028/',
-  //       proxy: '127.0.0.1:5010',
-  //       port: 5010,
-  //     });
-  //   }
-  // );
+  phpServer.server(
+    {
+      base: 'http://localhost:10028/',
+      port: 5010,
+      open: false,
+      bin: '/Applications/MAMP/bin/php/php7.2.8/bin/php',
+      ini: '/Applications/MAMP/bin/php/php7.2.8/conf/php.ini',
+    },
+    function () {
+      browserSync({
+        baseDir: 'http://localhost:10028/',
+        proxy: '127.0.0.1:5010',
+        port: 5010,
+      });
+    }
+  );
 
   // watch("./**/*.html", html);
   watch('./**/*.php', php);
@@ -120,7 +120,7 @@ function startAppServer() {
     './assets/src/scss/**/*.scss',
     './assets/src/js/**/*.js',
     './assets/src/images/**',
-  ]).on('change', serve);
+  ]).on('change', reload);
 }
 
 const build = series(parallel(optimizeImages, icon, styles, series(lint, scripts)));

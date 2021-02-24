@@ -42,7 +42,7 @@ get_header();
           if ($the_query->have_posts()) {
             while ($the_query->have_posts()) {
               $the_query->the_post();
-              get_template_part( 'template-parts/content', get_post_format());
+              get_template_part( 'template-parts/list-content', get_post_format());
               // get_template_part( 'template-parts/index/wpq_content', get_post_format());
             }
           }
@@ -53,6 +53,5 @@ get_header();
 			</div>
 		</div>
 </main>
-</div>
 <?php
 get_footer();

@@ -1,7 +1,5 @@
 <?php
-// ==================================================
-// サムネイル
-// ==================================================
+  // ===========> サムネイル
   if(has_post_thumbnail()) {
     // $thumb = the_post_thumbnail('full');
     $image_id = get_post_thumbnail_id ();
@@ -13,7 +11,7 @@
 ?>
 
 <li class="pb-4">
-  <a class="block hover:bg-gray-300 transition p-4" href="<?php the_permalink(); ?>?postid=<?php the_ID();?>">
+  <a class="block hover:bg-gray-300 transition p-4" href="<?php the_permalink(); ?>">
 <h4 class="c-tail mb-4"><?php the_title(); ?></h4>
   <div class="flex">
     <img class="inline-block" style="width: 200px;" src="<?php echo $thumb; ?>" alt="">
