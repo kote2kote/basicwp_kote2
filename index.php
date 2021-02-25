@@ -16,7 +16,7 @@ get_header();
 ?>
 <main class="main w-full">
 　　<div class="inner px-8">
-			<h2 class="c-tail mb-8">トップページ</h2>
+			<h2 class="c-tail mb-8">すべての記事</h2>
 			<div class="">
 				<ul class="list-none">
 					<?php

@@ -148,3 +148,37 @@ function lig_wp_get_next_post() {
 
   return $next;
 }
+
+// ===================================================
+// Rest APIにサムネイル追加'thumbnail'エンドポイント作成
+// ===================================================
+function add_thumbnail_to_JSON() {
+  //Add featured image
+    register_rest_field('post',
+      'featured_image', // このparamで以下を追加
+      array(
+        'get_callback' => 'get_thumbURL',
+        'update_callback' => null,
+        'schema' => null,
+      )
+    );
+  }
+  add_action('rest_api_init', 'add_thumbnail_to_JSON');
+// ===================================================
+// Rest APIにサムネイル画像
+// ===================================================
+function get_thumbURL($object, $field_name, $request) {
+	$feat_img_array = wp_get_attachment_image_src($object['featured_media'], 'large', true);
+
+	// アイキャッチ画像がない場合
+	$tmpImg = $feat_img_array[0];
+	if(strpos($feat_img_array[0],'wp-includes/images/media/default.png') !== false){
+		$tmpImg = 'https://kote2tokyo.kote2.co/wp-content/uploads/2019/05/test.png';
+	}
+	
+  return [
+    'src' => $tmpImg,
+    'width' => $feat_img_array[1],
+    'height' => $feat_img_array[2],
+  ];
+}
