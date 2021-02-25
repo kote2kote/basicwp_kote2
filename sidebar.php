@@ -17,7 +17,6 @@
   wp_nav_menu( array(
     'theme_location'	=> 'mainmenu', // function.phpで設定したメニュー名を表示
     'container'			=> false,
-    'container_class' => 'hover:bg-gray-300 transition'
   ) );
 ?>
 
