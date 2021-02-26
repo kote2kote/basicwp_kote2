@@ -24,6 +24,7 @@
 </head>
 
 <body>
+<?php get_template_part('debug'); ?>
 <div class="inner min-h-screen flex flex-col justify-between">
 
 <header class="bg-black text-white p-4 w-full">
