@@ -11,8 +11,39 @@ if(has_post_thumbnail()) {
   $thumb = 'https://basic.kote2.co/wp-content/uploads/2021/02/screenshot.png'; //アイキャッチを設定してなかった場合
 }
  ?>
-<h2 class="c-tail mb-8"><?php the_title() ?></h2>
+<h2 class="c-tail"><?php the_title() ?></h2>
 <div class="inner">
+<div class="w-full flex pb-8">
+
+<div class="inline-block pr-2"><span class="font-bold">カテゴリ: </span>
+
+<?php 
+// ===========> カテゴリ
+$categories = get_the_category();
+if(isset($categories[0])) {
+?>
+<span><a class="relative underline" href="/category/<?php echo $categories[0]->slug?>"><?php echo $categories[0]->cat_name?></a></span>
+<?php } ?>
+</div>
+
+<div class="inline-block"><span class="font-bold">タグ: </span>
+
+<?php 
+// ===========> タグ
+$tags = get_the_tags();
+if(isset($tags[0])) {
+  foreach ( $tags as $tag ) {
+?>
+<span><a class="relative underline" href="/tag/<?php echo $tag -> slug; ?>"><?php echo $tag -> name; ?></a></span>
+<?php
+    }
+  } ?>
+
+</div>
+</div>
 <div class="text-center pb-12"><img class="inline-block" style="width: 500px;" src="<?php echo $thumb; ?>" alt=""></div>
-  <?php the_content(); ?>
+<div>
+<?php the_content(); ?>
+</div>
+  
 </div>

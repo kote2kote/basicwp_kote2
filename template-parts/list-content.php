@@ -19,7 +19,7 @@
     <img class="w-full" src="<?php echo $thumb; ?>" alt="">
     </figure>
     <div class="w-full px-6">
-      <div><?php echo mb_substr( get_the_excerpt(), 0, 50 ) . '...'; ?></div>
+      <div><?php echo mb_substr( get_the_excerpt(), 0, 80 ) . '...'; ?></div>
       <div class="pt-4"><span class="font-bold">カテゴリ: </span>
 
       <?php 

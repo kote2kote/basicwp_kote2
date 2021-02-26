@@ -94,36 +94,25 @@ register_nav_menus( array(
 ));
 
 // ===================================================
-// singleページに前後の記事情報を追加
+// デフォルトrestAPIを修正 tags/categories/prev/nextを追加
 // ===================================================
 function editRestAPI( $data ) {
-  // $prams = $request->get_params();
-
-  // if (isset($prams['slug'])) { } // singleの時だけにしたい場合
-  
-    $data->data['tags'] = get_the_tags();
-    $data->data['categories'] = get_the_category();
-    $data->data['prev'] = lig_wp_get_previous_post();  // 前の記事
-    $data->data['next'] = lig_wp_get_next_post();      // 次の記事
-    $data->data['test'] = 'てすと';
-
+  $data->data['tags'] = get_the_tags(); // タグ
+  $data->data['categories'] = get_the_category(); // カテゴリ
+  $data->data['prev'] = getPreviousPost(); // 前の記事
+  $data->data['next'] = getNextPost(); // 次の記事
   return $data;
 }
 add_filter( 'rest_prepare_post', 'editRestAPI', 10, 3 );
 
 // -- 前の記事 --------------------
-function lig_wp_get_previous_post() {
-  // 特定のカテゴリを除外する
-  $prev = get_previous_post($excluded_terms = [1]); // 未定義, Draft, Test
-  // 前の記事がない場合、○空にする X最初の記事を取得する
-  if(empty($prev)) {
-    // $prev = get_posts(array('order' => 'DESC', 'posts_per_page' => 1));
-    // if(!empty($prev[0])) {
-    //   $prev = $prev[0];
-    // }
-    $prev = [];
+function getPreviousPost() {
+  $prev = get_previous_post($excluded_terms = [1]); // カテゴリid:1(未定義)を除外
+  // 前の記事がない場合
+  if(empty($prev)) { 
+    $prev = []; // 空に
   } else {
-    // サムネイルを追加
+    // サムネイルURLを追加
     $prev->featured_image_src = get_the_post_thumbnail_url($prev->ID);
   }
 
@@ -131,18 +120,11 @@ function lig_wp_get_previous_post() {
 }
 
 // -- 次の記事 --------------------
-function lig_wp_get_next_post() {
-  
-  $next = get_next_post($excluded_terms = [1]); // 未定義, Draft, Test
-  // 前の記事がない場合、○空にする X最初の記事を取得する
+function getNextPost() {
+  $next = get_next_post($excluded_terms = [1]);
   if(empty($next)) {
-    // $next = get_posts(array('order' => 'DESC', 'posts_per_page' => 1));
-    // if(!empty($next[0])) {
-    //   $next = $next[0];
-    // }
     $next = [];
   } else {
-    // サムネイルを追加
     $next->featured_image_src = get_the_post_thumbnail_url($next->ID);
   }
 
@@ -152,21 +134,7 @@ function lig_wp_get_next_post() {
 // ===================================================
 // Rest APIにサムネイル追加'thumbnail'エンドポイント作成
 // ===================================================
-function add_thumbnail_to_JSON() {
-  //Add featured image
-    register_rest_field('post',
-      'featured_image', // このparamで以下を追加
-      array(
-        'get_callback' => 'get_thumbURL',
-        'update_callback' => null,
-        'schema' => null,
-      )
-    );
-  }
-  add_action('rest_api_init', 'add_thumbnail_to_JSON');
-// ===================================================
-// Rest APIにサムネイル画像
-// ===================================================
+
 function get_thumbURL($object, $field_name, $request) {
 	$feat_img_array = wp_get_attachment_image_src($object['featured_media'], 'large', true);
 
@@ -182,3 +150,18 @@ function get_thumbURL($object, $field_name, $request) {
     'height' => $feat_img_array[2],
   ];
 }
+
+function add_thumbnail_to_JSON() {
+//Add featured image
+  register_rest_field('post',
+    'featured_image', // このparamで以下を追加
+    array(
+      'get_callback' => 'get_thumbURL',
+      'update_callback' => null,
+      'schema' => null,
+    )
+  );
+}
+add_action('rest_api_init', 'add_thumbnail_to_JSON');
+
+
