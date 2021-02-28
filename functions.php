@@ -170,3 +170,9 @@ function add_thumbnail_to_JSON() {
 add_action('rest_api_init', 'add_thumbnail_to_JSON');
 
 
+// カスタム投稿タイプをrestで使う設定
+// register_post_type('cpt', [
+//   // (オプション中略)
+//   'show_in_rest' => true,
+//   'rest_base' => 'cpt',
+// ]);
