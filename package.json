@@ -6,7 +6,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production gulp build",
     "start": "cross-env NODE_ENV=production gulp serve",
-    "dev": "gulp serve",
+    "dev": "cross-env NODE_ENV=development gulp serve",
     "icon": "gulp icon"
   },
   "devDependencies": {
