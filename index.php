@@ -16,7 +16,7 @@
 get_header();
 ?>
 <main class="main flex w-full">
-　　<div class="inner px-8 w-full h-full cm">
+　　<div class="inner px-8 w-full h-full">
       <h2 class="c-tail mb-8">メイン</h2>
         <div class="">
           text
