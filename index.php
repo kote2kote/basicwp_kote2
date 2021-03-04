@@ -14,20 +14,16 @@
 
  // -- カテゴリページチェック -------------- //
 $cat_id = null;
-// $cat_name = '';
 if( is_category() ){
   $cat = get_the_category();
   $cat_id = $cat[0]->term_id;
-  // $cat_name = $cat[0]->name;
 }
 
  // -- タグページチェック -------------- //
  $tag_id = null;
-//  $tag_name = '';
  if( is_tag() ){
    $tag = get_the_tags();
    $tag_id = $tag[0]->term_id;
-  //  $tag_name = $tag[0]->name;
  }
 
   // -- 検索ページチェック -------------- //
@@ -64,7 +60,7 @@ get_header();
           
 
 					// ==================================================
-          // サブループ(WP_Query)
+          // WP_Query
           // ==================================================
           $args = array(
 
@@ -80,7 +76,7 @@ get_header();
             'tag_id' => $tag_id,
             's' => $search_word,
             'posts_per_page' => -1, // -1は全て
-            'no_found_rows' => false, //全部取ってくる。つまり、true => ページングを使用しない false => 使用する
+            'no_found_rows' => true, //true => ページングを使用しない
           );
 
           $the_query = new WP_Query($args);
@@ -88,7 +84,6 @@ get_header();
             while ($the_query->have_posts()) {
               $the_query->the_post();
               get_template_part( 'template-parts/list-content', get_post_format());
-              // get_template_part( 'template-parts/index/wpq_content', get_post_format());
             }
           }
           wp_reset_postdata();

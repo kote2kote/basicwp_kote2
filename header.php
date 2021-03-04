@@ -9,6 +9,9 @@
  * @package basicwp_kote2
  */
 
+global $is_dev;
+global $is_prod;
+
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -24,7 +27,12 @@
 </head>
 
 <body>
-<?php get_template_part('debug'); ?>
+
+<?php if($is_dev) {get_template_part('debug');} ?>
+<?php if($is_dev) {?>
+	<div class='inner fixed right-0 bg-red-600 text-white p-2 font-bold'>dev</div>
+<?php }?>
+
 <div class="inner min-h-screen flex flex-col justify-between">
 
 <header class="bg-black text-white p-4 w-full">

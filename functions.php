@@ -7,13 +7,26 @@
  * @package basicwp_kote2
  */
 
-// ==================================================
+ // ==================================================
 // 環境変数
 // ==================================================
 
+// => 環境判別
+global $dev_url;
+global $prod_url;
+global $is_dev;
+global $is_prod;
+$is_dev = $is_prod = false;
+$dev_url = 'http://localhost:10028'; // dev環境のURL 自由に変更してください
+$prod_url = 'https://basic.kote2.co'; // prod環境のURL 自由に変更してください
+if(home_url() === $dev_url) {
+  $is_dev = true;
+} else {
+  $is_prod = true;
+}
 
-// ==================================================
-// default
+ // ==================================================
+// default設定
 // ==================================================
 
  // ===========> クロスドメインでrestAPIを使う場合はcors設定が必要
@@ -170,7 +183,7 @@ function add_thumbnail_to_JSON() {
 add_action('rest_api_init', 'add_thumbnail_to_JSON');
 
 
-// カスタム投稿タイプをrestで使う設定
+// カスタム投稿タイプをrestで使う設定(必要なかった)
 // register_post_type('cpt', [
 //   // (オプション中略)
 //   'show_in_rest' => true,

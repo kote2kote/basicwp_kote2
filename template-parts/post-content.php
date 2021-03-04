@@ -11,7 +11,7 @@ if(has_post_thumbnail()) {
   $thumb = 'https://basic.kote2.co/wp-content/uploads/2021/02/screenshot.png'; //アイキャッチを設定してなかった場合
 }
  ?>
-<h2 class="c-tail"><?php the_title() ?></h2>
+<h2 class="c-tail"><?php the_title() ?><?php echo ' / ' . get_field('cf-test') ?></h2>
 <div class="inner">
 <div class="w-full flex pb-8">
 
