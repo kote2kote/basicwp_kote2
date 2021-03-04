@@ -13,7 +13,7 @@
  */
 
  // -- カテゴリページチェック -------------- //
-$cat_id = array();
+$cat_id = null;
 // $cat_name = '';
 if( is_category() ){
   $cat = get_the_category();
@@ -76,7 +76,7 @@ get_header();
   
             // -- オプション --------------------
             'cat' => $cat_id,
-            'category__not_in' => [1], // acfのカテゴリと未定義は除く
+            'category__not_in' => 1, // acfのカテゴリと未定義は除く
             'tag_id' => $tag_id,
             's' => $search_word,
             'posts_per_page' => -1, // -1は全て
