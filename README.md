@@ -1,3 +1,3 @@
 # basic_wp
 
-ver 1.0.1
+ver 1.0.2
