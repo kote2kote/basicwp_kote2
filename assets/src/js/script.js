@@ -16,3 +16,8 @@ function openDebug(e) {
   }
 }
 window.addEventListener('keyup', openDebug);
+
+// ==================================================
+// objectFitImages
+// ==================================================
+objectFitImages();

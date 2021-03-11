@@ -1,1 +1,1 @@
-let isDebugMode=!1;const domDebug=document.querySelector(".debug__js");function openDebug(e){90===e.keyCode&&(this.isDebugMode=!this.isDebugMode,this.isDebugMode?domDebug.classList.remove("hidden"):domDebug.classList.add("hidden"))}window.addEventListener("keyup",openDebug);
+let isDebugMode=!1;const domDebug=document.querySelector(".debug__js");function openDebug(e){90===e.keyCode&&(this.isDebugMode=!this.isDebugMode,this.isDebugMode?domDebug.classList.remove("hidden"):domDebug.classList.add("hidden"))}window.addEventListener("keyup",openDebug),objectFitImages();

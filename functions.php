@@ -95,6 +95,7 @@ function basicwp_kote2_scripts() {
 
   //JS
   wp_enqueue_script( 'theme_kote2tokyo-polyfill', '//polyfill.io/v3/polyfill.min.js?features=es6%2CIntersectionObserver%2CIntersectionObserverEntry', array(), $id, true);
+  wp_enqueue_script( 'theme_kote2tokyo-object-fit-images', '//cdnjs.cloudflare.com/ajax/libs/object-fit-images/3.2.4/ofi.min.js', array(), $id, true);
 	wp_enqueue_script( 'basicwp_kote2-script-js', get_template_directory_uri(). '/assets/dist/js/script.js', array(), $id, true);
 	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
